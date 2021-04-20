@@ -1,8 +1,13 @@
 import React from 'react';
-import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Dimensions,
+  Image,
+  SafeAreaView,
+  StyleSheet, Text,
+  TouchableOpacity,
+  View } from 'react-native';
 
 import wateringImg from '../assets/watering.png';
-import Button from '../components/Button';
 
 import colors from '../styles/colors';
 
@@ -15,7 +20,11 @@ export default function Welcome() {
         forma fácil
       </Text>
 
-      <Image source={ wateringImg } style={styles.image}/>
+      <Image
+        source={ wateringImg } 
+        style={styles.image}
+        resizeMode='contain'
+      />
 
       <Text style={styles.subtitle}>
         Não esqueça mais de regar suas {'\n'}
@@ -23,7 +32,14 @@ export default function Welcome() {
         sempre que precisar.
       </Text>
 
-      <Button>{'>'}</Button>
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.7}
+      >
+        <Text style={styles.buttonText}>
+          {'>'}
+        </Text>
+    </TouchableOpacity>
     </SafeAreaView>
   )
 }
@@ -32,7 +48,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
 
   title: {
@@ -51,7 +67,21 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 292,
-    height: 284,
-  }
+    height: Dimensions.get('window').width * 0.7,
+  },
+
+  button: {
+    alignItems: 'center',
+    backgroundColor: colors.green,
+    borderRadius: 16,
+    height: 56,
+    justifyContent: 'center',
+    marginBottom: 10,
+    width: 56,
+  },
+
+  buttonText: {
+    color: colors.white,
+    fontSize: 24,
+  },
 });
