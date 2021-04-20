@@ -20,13 +20,14 @@ export default function Button({children, ...rest}: ButtonProps) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: colors.green,
-    justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: colors.green,
     borderRadius: 16,
-    marginBottom: 20,
-    width: 56,
     height: 56,
+    justifyContent: 'center',
+    marginBottom: 20,
+    minWidth: 56,
+    paddingHorizontal: 22,
   },
 
   buttonText: {
