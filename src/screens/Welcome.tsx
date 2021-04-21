@@ -7,39 +7,45 @@ import {
   TouchableOpacity,
   View } from 'react-native';
 
+import { Feather } from '@expo/vector-icons';
+
 import wateringImg from '../assets/watering.png';
 
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 
 export default function Welcome() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>
-        Gerencie {'\n'}
-        suas plantas de {'\n'}
-        forma fácil
-      </Text>
-
-      <Image
-        source={ wateringImg } 
-        style={styles.image}
-        resizeMode='contain'
-      />
-
-      <Text style={styles.subtitle}>
-        Não esqueça mais de regar suas {'\n'}
-        plantas. Nós cuidamos de lembrar você {'\n'}
-        sempre que precisar.
-      </Text>
-
-      <TouchableOpacity
-        style={styles.button}
-        activeOpacity={0.7}
-      >
-        <Text style={styles.buttonText}>
-          {'>'}
+      <View style={styles.wrapper}>
+        <Text style={styles.title}>
+          Gerencie {'\n'}
+          suas plantas de {'\n'}
+          forma fácil
         </Text>
-    </TouchableOpacity>
+VIDEO PAUSADO EM 35:40
+        <Image
+          source={ wateringImg } 
+          style={styles.image}
+          resizeMode='contain'
+        />
+
+        <Text style={styles.subtitle}>
+          Não esqueça mais de regar suas {'\n'}
+          plantas. Nós cuidamos de lembrar você {'\n'}
+          sempre que precisar.
+        </Text>
+
+        <TouchableOpacity
+          style={styles.button}
+          activeOpacity={0.7}
+        >
+          <Feather
+            name="chevron-right"
+            style={styles.buttonIcon}
+          />
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   )
 }
@@ -47,14 +53,20 @@ export default function Welcome() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+
+  wrapper: {
     alignItems: 'center',
+    flex: 1,
     justifyContent: 'space-around',
+    paddingHorizontal: 20
   },
 
   title: {
     color: colors.heading,
-    fontSize: 32,
-    fontWeight: 'bold',
+    fontFamily: fonts.heading,
+    fontSize: 28,
+    lineHeight: 34,
     marginTop: 38,
     textAlign: 'center',
   },
@@ -64,6 +76,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 25,
     color: colors.heading,
+    fontFamily: fonts.text,
   },
 
   image: {
@@ -80,8 +93,8 @@ const styles = StyleSheet.create({
     width: 56,
   },
 
-  buttonText: {
+  buttonIcon: {
     color: colors.white,
-    fontSize: 24,
+    fontSize: 32,
   },
 });
