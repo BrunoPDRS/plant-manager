@@ -23,7 +23,7 @@ export default function Welcome() {
           suas plantas de {'\n'}
           forma fácil
         </Text>
-VIDEO PAUSADO EM 35:40
+
         <Image
           source={ wateringImg } 
           style={styles.image}
