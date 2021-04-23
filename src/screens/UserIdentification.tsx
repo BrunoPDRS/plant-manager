@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import {
+  Keyboard,
   KeyboardAvoidingView,
   Platform,
   SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
+  TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
@@ -33,40 +35,42 @@ export default function UserIdentification() {
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        <View style={styles.content}>
-          <View style={styles.form}>
-            <View style={styles.header}>
-              <Text style={styles.emoji}>
-                {(isFocused || isFilled) ? "😄" : "😀"} 
-              </Text>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.content}>
+            <View style={styles.form}>
+              <View style={styles.header}>
+                <Text style={styles.emoji}>
+                  {(isFocused || isFilled) ? "😄" : "😀"} 
+                </Text>
 
-              <Text style={styles.title}>
-                Como podemos{'\n'}
-                chamar você?
-              </Text>
-            </View>
+                <Text style={styles.title}>
+                  Como podemos{'\n'}
+                  chamar você?
+                </Text>
+              </View>
 
-            <TextInput
-              placeholder="Digite um nome"
-              style={[
-                styles.input,
-                (isFocused || isFilled) && styles.inputFocus,
-              ]}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
-              onChangeText={handleInputChange}
-            />
+              <TextInput
+                placeholder="Digite um nome"
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && styles.inputFocus,
+                ]}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+                onChangeText={handleInputChange}
+              />
 
-            <View style={styles.footer}>
-              <Button
-                disabled={!isFilled}
-                onPress={
-                  () => navigation.navigate('Confirmation')
-                }
-              >Confirmar</Button> 
+              <View style={styles.footer}>
+                <Button
+                  disabled={!isFilled}
+                  onPress={
+                    () => navigation.navigate('Confirmation')
+                  }
+                >Confirmar</Button> 
+              </View>
             </View>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
