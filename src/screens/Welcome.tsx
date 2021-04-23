@@ -8,12 +8,12 @@ import {
   View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
 
 import wateringImg from '../assets/watering.png';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import { useNavigation } from '@react-navigation/core';
 
 export default function Welcome() {
   const navigation = useNavigation();

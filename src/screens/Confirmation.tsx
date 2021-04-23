@@ -5,10 +5,11 @@ import {
   Text,
   View,
 } from 'react-native';
+
 import Button from '../components/Button';
+
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-
 
 export default function Confirmation() {
   return (

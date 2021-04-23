@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/core';
 import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
@@ -9,7 +8,10 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
+
 import Button from '../components/Button';
+
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
