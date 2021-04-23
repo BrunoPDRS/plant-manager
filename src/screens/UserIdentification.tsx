@@ -14,6 +14,14 @@ import fonts from '../styles/fonts';
 
 export default function UserIdentification() {
   const [isFocused, setIsFocused] = useState(false);
+  const [isFilled, setIsFilled] = useState(false);
+  const [name, setName] = useState<String>();
+
+  const handleInputChange = (value: String) => {
+    setIsFilled(!!value);
+    setName(value);
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView 
@@ -22,28 +30,31 @@ export default function UserIdentification() {
       >
         <View style={styles.content}>
           <View style={styles.form}>
-            <Text style={styles.emoji}>
-              {isFocused ? "😄" : "😀"} 
-              VID5540
-            </Text>
+            <View style={styles.header}>
+              <Text style={styles.emoji}>
+                {(isFocused || isFilled) ? "😄" : "😀"} 
+              </Text>
 
-            <Text style={styles.title}>
-              Como podemos {'\n'}
-              chamar você?
-            </Text>
+              <Text style={styles.title}>
+                Como podemos{'\n'}
+                chamar você?
+              </Text>
+            </View>
 
             <TextInput
               placeholder="Digite um nome"
-              style={
-                isFocused
-                ? { ...styles.input, ...styles.inputFocus }
-                : styles.input
-              }
+              style={[
+                styles.input,
+                (isFocused || isFilled) && styles.inputFocus,
+              ]}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
-              />
+              onChangeText={handleInputChange}
+            />
 
-            <Button>Confirmar</Button>
+            <View style={styles.footer}>
+              <Button>Confirmar</Button> 
+            </View>
           </View>
         </View>
       </KeyboardAvoidingView>
@@ -68,6 +79,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 54,
+    alignItems: 'center',
+  },
+  
+  header: {
     alignItems: 'center',
   },
 
@@ -98,7 +113,12 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     fontFamily: fonts.heading,
     marginTop: 20,
+  },
+
+  footer: {
+    width: '100%',
+    marginTop: 40,
+    paddingHorizontal: 20,
   }
 });
 
-// 😁

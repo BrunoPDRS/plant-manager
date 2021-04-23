@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 40,
     paddingHorizontal: 30,
     minWidth: 230,
   },
