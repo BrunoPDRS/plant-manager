@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+import { useNavigation } from '@react-navigation/core';
+import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -16,6 +17,8 @@ export default function UserIdentification() {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [name, setName] = useState<String>();
+
+  const navigation = useNavigation();
 
   const handleInputChange = (value: String) => {
     setIsFilled(!!value);
@@ -53,7 +56,12 @@ export default function UserIdentification() {
             />
 
             <View style={styles.footer}>
-              <Button>Confirmar</Button> 
+              <Button
+                disabled={!isFilled}
+                onPress={
+                  () => navigation.navigate('Confirmation')
+                }
+              >Confirmar</Button> 
             </View>
           </View>
         </View>
